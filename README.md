@@ -12,7 +12,7 @@ This is the React + TypeScript frontend for the IIT ASC Course Manager. It provi
   - Viewing and deleting course and instance details
 - Connected to the backend via CORS
 
-## Screens / Routes
+## Routes
 
 - `/` — List all courses
 - `/create` — Create a new course
