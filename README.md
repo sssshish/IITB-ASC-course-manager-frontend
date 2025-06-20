@@ -43,12 +43,13 @@ npm run dev
 
 # Runs on http://localhost:5173 by default
 
-## Run Docker image
+## Run Docker frontend image individually
 docker build -t course-manager-frontend .
 docker run -p 5173:5173 course-manager-frontend
 
-# To run with frontend
+# To run with backend
 docker-compose up --build
+
 
 
 
