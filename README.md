@@ -26,10 +26,10 @@ This is the React + TypeScript frontend for the IIT ASC Course Manager. It provi
 ## Application Screenshots
 
 <div align="center">
-  <img src="docs/create_course.PNG" alt="Create a Course" width="600" />
-  <img src="docs/view_course.PNG" alt="View all courses" width="600" />
-  <img src="docs/create_instance.PNG" alt="Create an Instance for a course" width="600" />
-  <img src="docs/view_instances.PNG" alt="View Instance by Year and Sem" width="600" />
+  <img src="images/create_course.PNG" alt="Create a Course" width="600" />
+  <img src="images/view_course.PNG" alt="View all courses" width="600" />
+  <img src="images/create_instance.PNG" alt="Create an Instance for a course" width="600" />
+  <img src="images/view_instances.PNG" alt="View Instance by Year and Sem" width="600" />
 </div>
 
 ## Local Setup
