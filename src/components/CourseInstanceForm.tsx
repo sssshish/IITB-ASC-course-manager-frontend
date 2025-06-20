@@ -1,4 +1,4 @@
-//CourseInstanceForm.tsx
+// CourseInstanceForm.tsx
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import api from '../api';
 import { type Course } from '../types';
@@ -24,6 +24,7 @@ export default function CourseInstanceForm() {
                 course_id: parseInt(form.course),
             });
             alert('Instance created');
+            setForm({ year: '', semester: '', course: '' });
         } catch (err) {
             alert('Error creating instance');
             console.error(err);
@@ -31,20 +32,33 @@ export default function CourseInstanceForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Create Course Instance</h2>
-            <input name="year" placeholder="Year" value={form.year} onChange={handleChange} required />
-            <input name="semester" placeholder="Semester" value={form.semester} onChange={handleChange} required />
-            <select name="course" value={form.course} onChange={handleChange} required>
-                <option value="">-- Select Course --</option>
-                {courses.map((course) => (
-                    <option key={course.id} value={course.id}>
-                        {course.title} ({course.code})
-                    </option>
-                ))}
-            </select>
-            <button type="submit">Create Instance</button>
-        </form>
+        <section className="container">
+            <form className="styled-form" onSubmit={handleSubmit}>
+                <select name="course" value={form.course} onChange={handleChange} required>
+                    <option value="">Select course</option>
+                    {courses.map(course => (
+                        <option key={course.id} value={course.id}>
+                            {course.title} ({course.code})
+                        </option>
+                    ))}
+                </select>
+                <input
+                    name="year"
+                    placeholder="Year"
+                    value={form.year}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    name="semester"
+                    placeholder="Semester"
+                    value={form.semester}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit">Add instance</button>
+            </form>
+        </section>
     );
 }
 

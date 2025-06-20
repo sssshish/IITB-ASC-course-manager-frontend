@@ -15,24 +15,50 @@ body {
   background-color: var(--bg-light);
   color: var(--text-primary);
   margin: 0;
-  padding-top: 130px;
+  padding-top: 100px; /* ✅ reduce this from 150px to 100px (or match header height) */
   line-height: 1.6;
 }
 
-nav {
-  position: relative;
+.site-header {
+background-color: #EEEDFD;
+  color: #ffffff;
+  border-bottom: 0.5px solid var(--border-color);
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1000;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  height: 100px; /* ✅ define a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-header .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* ✅ center vertically */
+  padding: 0;
+  margin: 0;
+}
+
+
+nav {
   background-color: white;
   border-bottom: 1px solid var(--border-color);
   padding: 1rem 2rem;
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  z-index: 1000;
+  z-index: 900;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  margin-top: 0; /* remove excess push */
+  margin-bottom: 1rem; /* 👈 add space before content */
 }
+
 
 nav a {
   color: var(--accent);
@@ -44,12 +70,12 @@ nav a {
 nav a:hover {
   color: var(--accent-dark);
 }
-
 .container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 2rem 1.5rem;
 }
+
 
 h1, h2 {
   text-align: center;
@@ -64,16 +90,18 @@ h1 {
 h2 {
   font-size: 1.75rem;
   color: var(--accent);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+  text-align: center;
 }
+
 
 section {
   background: var(--card-bg);
-  border-radius: 18px;
+  border-radius: 16px;
   padding: 2rem;
-  margin-bottom: 2.5rem;
+  margin: 2rem 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -105,7 +133,6 @@ form {
     flex: 1;
   }
 }
-
 input, select, textarea {
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -113,8 +140,10 @@ input, select, textarea {
   border-radius: 10px;
   background-color: white;
   transition: all 0.2s ease;
-  width: 100%;
+  width: auto;            /* ✅ Fix */
+  max-width: 100%;        /* ✅ Prevent overflow */
 }
+
 
 input:focus, select:focus, textarea:focus {
   border-color: var(--accent);
@@ -132,35 +161,18 @@ button {
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
-  width: 100%;
+  width: auto;
+  max-width: 200px;
 }
 
-.site-header {
-  background-color: var(--card-bg);
-  border-bottom: 1px solid var(--border-color);
-  padding: 1rem 2rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1100;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.site-header .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
 
 .site-header h1 {
   margin: 0;
-  font-size: 1.75rem;
-  font-weight: 600;
+  font-size: 1.5rem; /* smaller font */
+  font-weight: 700;
   color: var(--text-primary);
 }
+
 
 .site-header .highlight {
   color: var(--accent);
@@ -200,15 +212,13 @@ ul {
 }
 
 li {
-  background: var(--card-bg);
-  padding: 1.25rem;
-  margin: 0.75rem 0;
-  border-radius: 14px;
+  padding: 1rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  gap: 1rem;
 }
+
 
 li button {
   background-color: var(--danger);
@@ -230,4 +240,78 @@ li button:hover {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+
+/* ======== Styled Form ======== */
+.styled-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: stretch;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.styled-form input,
+.styled-form textarea {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.styled-form button {
+  padding: 0.75rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.styled-form button:hover {
+  background-color: #0059c0;
+}
+
+/* ======== Styled Table ======== */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  font-size: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.styled-table thead {
+  background-color: var(--accent);
+  color: white;
+}
+
+.styled-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* ======== Icon Buttons ======== */
+.icon-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: transform 0.1s ease;
+}
+
+.icon-button:hover {
+  transform: scale(1.1);
 }

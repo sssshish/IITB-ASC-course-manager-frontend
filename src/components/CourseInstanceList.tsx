@@ -1,4 +1,4 @@
-//CourseInstanceList.tsx
+// CourseInstanceList.tsx
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api';
@@ -20,22 +20,37 @@ export default function CourseInstanceList() {
     };
 
     return (
-        <div>
+        <section className="container">
             <h2>Course Instances</h2>
-            <input name="year" placeholder="Year" onChange={e => setForm({ ...form, year: e.target.value })} />
-            <input name="semester" placeholder="Semester" onChange={e => setForm({ ...form, semester: e.target.value })} />
-            <button onClick={fetchInstances}>Fetch</button>
-            <ul>
-                {instances.map(i => (
-                    <li key={`${i.course.id}-${i.year}-${i.semester}`}>
-                        <Link to={`/instances/${i.year}/${i.semester}/${i.course.id}`}>
-                            {i.course.title} ({i.course.code}) - Year: {i.year}, Sem: {i.semester}
-                        </Link>
-                        <button onClick={() => deleteInstance(i)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            <form className="styled-form" onSubmit={e => { e.preventDefault(); fetchInstances(); }}>
+                <input name="year" placeholder="Year" onChange={e => setForm({ ...form, year: e.target.value })} />
+                <input name="semester" placeholder="Semester" onChange={e => setForm({ ...form, semester: e.target.value })} />
+                <button type="submit">List instances</button>
+            </form>
 
-        </div>
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Year-Sem</th>
+                        <th>Code</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {instances.map(i => (
+                        <tr key={`${i.course.id}-${i.year}-${i.semester}`}>
+                            <td>{i.course.title}</td>
+                            <td>{i.year}-{i.semester}</td>
+                            <td>{i.course.code}</td>
+                            <td>
+                                <Link to={`/instances/${i.year}/${i.semester}/${i.course.id}`} className="icon-button">🔍</Link>
+                                <button onClick={() => deleteInstance(i)} className="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </section>
     );
 }

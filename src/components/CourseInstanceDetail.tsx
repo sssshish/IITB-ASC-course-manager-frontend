@@ -1,4 +1,4 @@
-//CourseInstanceDetail.tsx
+// CourseInstanceDetail.tsx
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../api';
@@ -12,17 +12,17 @@ export default function CourseInstanceDetail() {
         api.get(`instances/${year}/${semester}/${id}/`).then(res => setInstance(res.data));
     }, [year, semester, id]);
 
-    if (!instance) return <div>Loading...</div>;
+    if (!instance) return <div className="container">Loading...</div>;
 
     return (
-        <div>
+        <section className="container">
             <h2>Course Instance</h2>
-            <p><b>Course Title:</b> {instance.course.title}</p>
-            <p><b>Course Code:</b> {instance.course.code}</p>
-            <p><b>Description:</b> {instance.course.description}</p>
-            <p><b>Course ID:</b> {instance.course.id}</p>
-            <p><b>Year:</b> {instance.year}</p>
-            <p><b>Semester:</b> {instance.semester}</p>
-        </div>
+            <p><strong>Course Title:</strong> {instance.course.title}</p>
+            <p><strong>Course Code:</strong> {instance.course.code}</p>
+            <p><strong>Description:</strong> {instance.course.description}</p>
+            <p><strong>Course ID:</strong> {instance.course.id}</p>
+            <p><strong>Year:</strong> {instance.year}</p>
+            <p><strong>Semester:</strong> {instance.semester}</p>
+        </section>
     );
 }

@@ -15,10 +15,13 @@ export default function CourseDetail() {
     if (!course) return <div>Loading...</div>;
 
     return (
-        <div>
-            <h2>{course.title}</h2>
-            <p><b>Code:</b> {course.code}</p>
-            <p><b>Description:</b> {course.description}</p>
-        </div>
+        <section className="container">
+            <div>
+                <h2>{course.title}</h2>
+                <p><b>Code:</b> {course.code}</p>
+                <p><b>Description:</b> {course.description}</p>
+            </div>
+        </section>
+
     );
 }

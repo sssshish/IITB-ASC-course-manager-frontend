@@ -1,4 +1,4 @@
-//CourseList.tsx
+// CourseList.tsx
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api';
@@ -17,16 +17,29 @@ export default function CourseList() {
     };
 
     return (
-        <div>
-            <h2>Courses</h2>
-            <ul>
-                {courses.map(c => (
-                    <li key={c.id}>
-                        <Link to={`/course/${c.id}`}>{c.title}</Link>
-                        <button onClick={() => deleteCourse(c.id)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <section className="container">
+            <h2>Course List</h2>
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th>Course Title</th>
+                        <th>Code</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {courses.map(course => (
+                        <tr key={course.id}>
+                            <td>{course.title}</td>
+                            <td>{course.code}</td>
+                            <td>
+                                <Link to={`/course/${course.id}`} className="icon-button">🔍</Link>
+                                <button onClick={() => deleteCourse(course.id)} className="icon-button">🗑️</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </section>
     );
 }
