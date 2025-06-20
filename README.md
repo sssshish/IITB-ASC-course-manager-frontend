@@ -21,6 +21,17 @@ This is the React + TypeScript frontend for the IIT ASC Course Manager. It provi
 - `/instances/create` — Create a new course instance
 - `/instances/:year/:semester/:id` — View instance details
 
+
+
+## Application Screenshots
+
+<div align="center">
+  <img src="docs/create_course.PNG" alt="Create a Course" width="600" />
+  <img src="docs/view_course.PNG" alt="View all courses" width="600" />
+  <img src="docs/create_instance.PNG" alt="Create an Instance for a course" width="600" />
+  <img src="docs/view_instances.PNG" alt="View Instance by Year and Sem" width="600" />
+</div>
+
 ## Local Setup
 
 ```bash
@@ -38,3 +49,6 @@ docker run -p 5173:5173 course-manager-frontend
 
 # To run with frontend
 docker-compose up --build
+
+
+
